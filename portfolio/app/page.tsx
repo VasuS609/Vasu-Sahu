@@ -6,15 +6,12 @@ import Dashboard from './pages/dashboard'
 
 const App = () => {
   return (
-    <>
+    <div className="w-screen h-screen bg-white overflow-auto">
     <head>
       <title>Portfolio</title>
     </head>
-    <main>
-      Welcome to my portfolio
-    </main>
   <Dashboard/>
-    </>
+    </div>
   
   )
 }
