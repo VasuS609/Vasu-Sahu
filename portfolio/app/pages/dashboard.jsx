@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'next/link';
-import Navigation from '../components/navigation';
+import Header from '../components/Header';
 import Body from '../components/body';
 import Footer from '../components/footer';
 
@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <div className='bg-white w-screen h-screen text-black'>
      <nav>
-      <Navigation/>
+      <Header/>
      </nav>
 
      <main>
