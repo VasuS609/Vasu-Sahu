@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react';
 import { Code, Award, Coffee, Briefcase, Mail, MapPin, Send } from 'lucide-react';
 
