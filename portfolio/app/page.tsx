@@ -1,97 +1,88 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Home, User, Briefcase, Mail } from 'lucide-react';
+import React, { useState } from 'react';
+import { Home, User, Briefcase, Mail } from 'lucide-react';
 import Header from './components/Header';
 import Body from './components/body';
 import Footer from './components/footer';
 
-
 const PortfolioPage = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  // Track which section is currently active
   const [activeSection, setActiveSection] = useState('home');
 
-  useEffect(() => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setDarkMode(prefersDark);
-  }, []);
+  return (
+    <div className="min-h-screen bg-gray-900 text-gray-100">
+      
+      {/* Background Grid Pattern */}
+      <div className="fixed inset-0 pointer-events-none opacity-5">
+        <div className="w-full h-full bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+      </div>
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+      <Header />
+      
+      <Body activeSection={activeSection} />
+      
+      <Footer />
 
-  // Bottom Navigation Component
-  const BottomNav = () => {
-    const navItems = [
-      { id: 'home', icon: Home, label: 'Home' },
-      { id: 'about', icon: User, label: 'About' },
-      { id: 'projects', icon: Briefcase, label: 'Projects' },
-      { id: 'Contact', icon: Mail, label: 'Contact' },
-    ];
-
-    return (
-      <nav className={`fixed bottom-0 left-0 right-0 z-50 transition-colors duration-500 ${
-        darkMode ? 'bg-gray-900/95' : 'bg-black/95'
-      } backdrop-blur-sm border-t ${
-        darkMode ? 'border-gray-800' : 'border-red-500/20'
-      }`}>
+      {/* Btm Nav */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-sm border-t border-gray-800">
         <div className="max-w-md mx-auto px-4">
           <div className="flex items-center justify-around py-3">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => setActiveSection(item.id)}
-                className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-all duration-200 ${
-                  activeSection === item.id
-                    ? darkMode
-                      ? 'text-white bg-white/10'
-                      : 'text-red-500 bg-red-500/10'
-                    : darkMode
-                    ? 'text-gray-400 hover:text-white'
-                    : 'text-red-300 hover:text-red-500'
-                }`}
-              >
-                <item.icon className="w-5 h-5" />
-                <span className="text-xs font-medium">{item.label}</span>
-              </button>
-            ))}
+            
+            {/* Home Btn */}
             <button
-              onClick={toggleDarkMode}
-              className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-all duration-200 ${
-                darkMode
-                  ? 'text-gray-400 hover:text-white'
-                  : 'text-red-300 hover:text-red-500'
+              onClick={() => setActiveSection('home')}
+              className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-all ${
+                activeSection === 'home'
+                  ? 'text-white bg-white/10'
+                  : 'text-gray-400 hover:text-white'
               }`}
             >
-              {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              <span className="text-xs font-medium">Theme</span>
+              <Home className="w-5 h-5" />
+              <span className="text-xs font-medium">Home</span>
+            </button>
+
+            {/* Abt Btn */}
+            <button
+              onClick={() => setActiveSection('about')}
+              className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-all ${
+                activeSection === 'about'
+                  ? 'text-white bg-white/10'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <User className="w-5 h-5" />
+              <span className="text-xs font-medium">About</span>
+            </button>
+
+            {/* Project Btn */}
+            <button
+              onClick={() => setActiveSection('projects')}
+              className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-all ${
+                activeSection === 'projects'
+                  ? 'text-white bg-white/10'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <Briefcase className="w-5 h-5" />
+              <span className="text-xs font-medium">Projects</span>
+            </button>
+
+            {/* Contact btn */}
+            <button
+              onClick={() => setActiveSection('contact')}
+              className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-all ${
+                activeSection === 'contact'
+                  ? 'text-white bg-white/10'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <Mail className="w-5 h-5" />
+              <span className="text-xs font-medium">Contact</span>
             </button>
           </div>
         </div>
       </nav>
-    );
-  };
-
-  return (
-    <div className={`min-h-screen transition-colors duration-500 ${
-      darkMode 
-        ? 'bg-gray-900 text-gray-100' 
-        : 'bg-gray-50 text-gray-900'
-    }`}>
-      {/* Grid Pattern Background */}
-      <div className="fixed inset-0 pointer-events-none opacity-5">
-        <div className={`w-full h-full ${
-          darkMode 
-            ? 'bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]' 
-            : 'bg-[linear-gradient(to_right,#ef4444_1px,transparent_1px),linear-gradient(to_bottom,#ef4444_1px,transparent_1px)]'
-        } bg-[size:40px_40px]`}></div>
-      </div>
-
-      <Header darkMode={darkMode} />
-      <Body darkMode={darkMode} activeSection={activeSection} />
-      <Footer darkMode={darkMode} />
-      <BottomNav />
-    
     </div>
   );
 };

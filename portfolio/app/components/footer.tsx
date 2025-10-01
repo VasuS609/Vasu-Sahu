@@ -1,65 +1,28 @@
 import React from 'react';
+import Link from 'next/link';
 
-interface FooterProps {
-  darkMode: boolean;
-}
-
-const Footer: React.FC<FooterProps> = ({ darkMode }) => {
+const Footer: React.FC = () => {
   return (
-    <footer className={`mt-16 border-t ${
-      darkMode ? 'border-gray-800' : 'border-red-100'
-    }`}>
-      <div className='max-w-7xl mx-auto px-4 py-8'>
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>
-            Vasu<span className={darkMode ? 'text-white' : 'text-red-500'}>.</span>
-          </div>
-          <nav className='flex gap-8'>
-            <a 
-              href="/" 
-              className={`font-medium transition-colors duration-200 ${
-                darkMode 
-                  ? 'text-gray-400 hover:text-white' 
-                  : 'text-gray-600 hover:text-red-500'
-              }`}
-            >
+    <footer className="mt-16 border-t border-red-100">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row justify-center gap-6">
+          
+          <nav className="flex gap-8 font-medium text-gray-300 transition-colors">
+           <Link href="/" className='hover:text-teal-300' >
               Home
-            </a>
-            <a 
-              href="/about" 
-              className={`font-medium transition-colors duration-200 ${
-                darkMode 
-                  ? 'text-gray-400 hover:text-white' 
-                  : 'text-gray-600 hover:text-red-500'
-              }`}
-            >
+            </Link>
+            <Link href="/about" className='hover:text-teal-300' >
               About
-            </a>
-            <a 
-              href="/projects" 
-              className={`font-medium transition-colors duration-200 ${
-                darkMode 
-                  ? 'text-gray-400 hover:text-white' 
-                  : 'text-gray-600 hover:text-red-500'
-              }`}
-            >
+            </Link>
+            <Link href="/projects" className='hover:text-teal-300'>
               Projects
-            </a>
-            <a 
-              href="/contact" 
-              className={`font-medium transition-colors duration-200 ${
-                darkMode 
-                  ? 'text-gray-400 hover:text-white' 
-                  : 'text-gray-600 hover:text-red-500'
-              }`}
-            >
+            </Link>
+            <Link href="/contact" className=' hover:text-teal-300'>
               Contact
-            </a>
+            </Link>
           </nav>
         </div>
-        <div className={`mt-6 pt-6 border-t text-center text-sm ${
-          darkMode ? 'border-gray-800 text-gray-500' : 'border-red-100 text-gray-500'
-        }`}>
+        <div className="mt-6 pt-6 border-t border-red-100 text-center text-sm text-gray-500 hover:text-">
           © {new Date().getFullYear()} Vasu. Crafted with passion and coffee ☕
         </div>
       </div>
