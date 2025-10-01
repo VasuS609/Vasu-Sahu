@@ -25,9 +25,9 @@ const PortfolioPage = () => {
       <Footer />
 
       {/* Btm Nav */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-sm border-t border-gray-800">
-        <div className="max-w-md mx-auto px-4">
-          <div className="flex items-center justify-around py-3">
+      <nav className="sticky bottom-1 flex  z-50 bg-gray-900/95 backdrop-blur-sm border-t border-gray-800">
+        <div className="w-md mx-auto px-4">
+          <div className="flex items-center justify-around py-1">
             
             {/* Home Btn */}
             <button
@@ -42,18 +42,6 @@ const PortfolioPage = () => {
               <span className="text-xs font-medium">Home</span>
             </button>
 
-            {/* Abt Btn */}
-            <button
-              onClick={() => setActiveSection('about')}
-              className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-all ${
-                activeSection === 'about'
-                  ? 'text-white bg-white/10'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              <User className="w-5 h-5" />
-              <span className="text-xs font-medium">About</span>
-            </button>
 
             {/* Project Btn */}
             <button
@@ -68,18 +56,7 @@ const PortfolioPage = () => {
               <span className="text-xs font-medium">Projects</span>
             </button>
 
-            {/* Contact btn */}
-            <button
-              onClick={() => setActiveSection('contact')}
-              className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-all ${
-                activeSection === 'contact'
-                  ? 'text-white bg-white/10'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              <Mail className="w-5 h-5" />
-              <span className="text-xs font-medium">Contact</span>
-            </button>
+            
           </div>
         </div>
       </nav>
