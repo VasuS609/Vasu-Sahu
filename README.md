@@ -164,5 +164,3 @@ This project is open source and available under the [MIT License](LICENSE).
 - Fonts from [Google Fonts](https://fonts.google.com)
 
 ---
-
-Built with ❤️ by Vasu
