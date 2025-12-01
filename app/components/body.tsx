@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import {Briefcase} from 'lucide-react';
+import Projects from './Projects';
 
 interface BodyProps {
   activeSection: string;
@@ -16,19 +17,15 @@ const Body: React.FC<BodyProps> = ({ activeSection }) => {
      
 
       {/* Projects Section */}
-      {activeSection === 'projects' && (
-        <section id="projects" className="mb-16 animate-fadeIn">
-          <h2 className="text-4xl font-bold mb-8 text-white">Projects</h2>
-          <div className="p-12 rounded-xl text-center bg-white/5 border border-white/10">
-            <Briefcase className="w-16 h-16 mx-auto mb-4 text-gray-600" />
-            <h3 className="text-2xl font-bold mb-3 text-white">Coming Soon</h3>
-            <p className="text-gray-400 max-w-md mx-auto">
-              I&apos;m currently curating my best projects to showcase here. Each will include live demos, source code, and detailed case studies. Stay tuned!
-            </p>
-          </div>
-        </section>
-      )}
-
+   {activeSection === 'projects' && (
+              <section id="projects" className="mb-16 animate-fadeIn">
+                <h2 className="text-4xl font-bold mb-8 text-white">Projects</h2>
+                
+                  <Projects/>
+            
+              </section>
+            )}
+      
      
 
       {/* Skills Section - Home */}

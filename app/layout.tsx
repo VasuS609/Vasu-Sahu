@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { Dosis, Geist_Mono } from "next/font/google";
+import { Dosis, Fira_Code, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { Fira_Code } from "next/font/google";
 
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-fira-code",
+});
 const Geist = Dosis({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -23,7 +29,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={firaCode.className}>
       <body
         className={`${Geist.variable} ${geistMono.variable} antialiased`}
       >

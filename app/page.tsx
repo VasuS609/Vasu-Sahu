@@ -11,7 +11,7 @@ const PortfolioPage = () => {
   const [activeSection, setActiveSection] = useState('home');
 
   return (
-    <div className="min-h-screen border-t border-t-gray-800  text-gray-900">
+    <div className="min-h-screen border-t border-t-gray-800 scroll-smooth text-gray-900">
       
       {/* Background Grid Pattern */}
       <div className="fixed inset-0 pointer-events-none opacity-5">

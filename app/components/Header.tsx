@@ -1,9 +1,13 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { MapPin, Clock, FileText, Github, Linkedin, Twitter, Link } from 'lucide-react';
+import { MapPin, Clock, FileText, Github, Linkedin, Twitter} from 'lucide-react';
 import { Matrix} from "@/components/ui/matrix"
 
-const Header: React.FC = () => {
+
+const Header = () => {
+  
+
+
   const [currentTime, setCurrentTime] = useState('');
 
   useEffect(() => {
@@ -41,9 +45,9 @@ const Header: React.FC = () => {
                 bg-white/10 hover:bg-white/20 text-white                
             }`}
           >
-            <a href="/Resume">
+            
             <FileText className="w-4 h-4" />
-            </a>
+         
            </a>
         </div>
       </div>
@@ -58,7 +62,7 @@ const Header: React.FC = () => {
           <h1 className={`text-6xl md:text-7xl font-black mb-6 transition-colors duration-500 
            text-white
           `}>
-            Hi, I&apos;m <span className={'text-teal-300'}>Vasu</span>
+            Hi, I&apos;m <span className={'text-teal-300'}  >Vasu</span>
           </h1>
          
           <p className={`text-lg mb-8 transition-colors duration-500  text-gray-200 
