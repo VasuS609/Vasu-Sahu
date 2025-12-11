@@ -83,7 +83,15 @@ const Header = () => {
             className={`text-lg mb-15 transition-colors duration-500  text-gray-200 
           `}
           >
-            <LayoutTextFlip />
+            <LayoutTextFlip 
+              text={"I'm "}
+              words={[
+                "MERN Stack Learner",
+                "OpenSource Contributor",
+                "Graphic Designer",
+                "C++ & DSA Practitioner",
+              ]}
+            />
           </p>
           <div className="flex items-center justify-center gap-4">
             <a
