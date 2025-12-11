@@ -6,10 +6,10 @@ import projectImg from "./img.jpg";
 import projectImg2 from "./img2.png"
 
 interface ProjectsProps {
-  darkMode: boolean;
+  darkMode?: boolean;
 }
 
-const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
+const Projects: React.FC<ProjectsProps> = ({ darkMode = true }) => {
   return (
     <div
       className={` text-white rounded-xl`}>

@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Dosis, Fira_Code, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import { Fira_Code } from "next/font/google";
-
 const firaCode = Fira_Code({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],

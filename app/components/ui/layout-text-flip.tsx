@@ -8,8 +8,8 @@ export const LayoutTextFlip = ({
   words = ["MERN Stack Learner", "OpenSource Contributor", "Graphic Designer",   "C++ & DSA Practitioner"],
   duration = 3000,
 }: {
-  text: string;
-  words: string[];
+  text?: string;
+  words?: string[];
   duration?: number;
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,7 +20,7 @@ export const LayoutTextFlip = ({
     }, duration);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [duration, words.length]);
 
   return (
     <>

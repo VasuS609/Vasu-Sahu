@@ -1,7 +1,17 @@
-// import React, { useState, useEffect } from 'react';
-// import { Volume2, SkipBack, Pause, Play, SkipForward, Heart } from 'lucide-react';
+"use client";
+import React from 'react';
 
-// const SpotifyPlayer = () => {
+const SpotifyPlayer: React.FC = () => {
+	return (
+		<div className="mt-10">
+			<div className="rounded-2xl p-6 w-full max-w-sm border border-gray-700/50 bg-white/5 text-white">
+				<div className="text-sm text-gray-300">Spotify widget coming soon.</div>
+			</div>
+		</div>
+	);
+};
+
+export default SpotifyPlayer;
 //   const [isPlaying, setIsPlaying] = useState(true);
 //   const [isLiked, setIsLiked] = useState(false);
 //   const [progress, setProgress] = useState(42);

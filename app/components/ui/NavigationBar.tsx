@@ -1,7 +1,8 @@
+"use client";
 import { useState } from 'react';
 
 export default function NavigationBar() {
-  const [hoveredButton, setHoveredButton] = useState(null);
+  const [hoveredButton, setHoveredButton] = useState<string | null>(null);
 
   return (
     <div className=" h-40  flex items-center justify-center">
