@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import {Briefcase} from 'lucide-react';
+import SpotifyPlayer from './spotify/spotify';
 import Projects from './Projects';
 
 interface BodyProps {
@@ -26,7 +26,7 @@ const Body: React.FC<BodyProps> = ({ activeSection }) => {
               </section>
             )}
       
-     
+     <SpotifyPlayer></SpotifyPlayer>
 
       {/* Skills Section - Home */}
       {activeSection === 'home' && (
