@@ -14,6 +14,7 @@ interface TrackInfo {
 const SpotifyMiniPlayer: React.FC = () => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [isLiked, setIsLiked] = useState(false);
+  const [refreshToken, setRefreshToken] = useState<string | null>(null);
   const [trackInfo, setTrackInfo] = useState<TrackInfo>({
     name: "Not playing",
     artist: "Spotify",
@@ -91,6 +92,7 @@ const SpotifyMiniPlayer: React.FC = () => {
         setAccessToken(data.access_token);
         localStorage.setItem('spotify_access_token', data.access_token);
         if (data.refresh_token) {
+          setRefreshToken(data.refresh_token);
           localStorage.setItem('spotify_refresh_token', data.refresh_token);
         }
         // Clean up
@@ -101,6 +103,40 @@ const SpotifyMiniPlayer: React.FC = () => {
       console.error('Token fetch error:', err);
     }
   }, [REDIRECT_URI]);
+
+  // Refresh access token using stored refresh token
+  const refreshAccessToken = useCallback(async () => {
+    const storedRefresh = refreshToken || localStorage.getItem('spotify_refresh_token');
+    if (!storedRefresh) return null;
+
+    try {
+      const response = await fetch('/api/spotify/refresh', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ refreshToken: storedRefresh }),
+      });
+
+      const data = await response.json();
+      if (response.ok && data.access_token) {
+        setAccessToken(data.access_token);
+        localStorage.setItem('spotify_access_token', data.access_token);
+        if (data.refresh_token) {
+          setRefreshToken(data.refresh_token);
+          localStorage.setItem('spotify_refresh_token', data.refresh_token);
+        }
+        return data.access_token as string;
+      }
+    } catch (err) {
+      console.error('Refresh token error:', err);
+    }
+
+    // If refresh fails, clear tokens
+    localStorage.removeItem('spotify_access_token');
+    localStorage.removeItem('spotify_refresh_token');
+    setAccessToken(null);
+    setRefreshToken(null);
+    return null;
+  }, [refreshToken]);
 
   // Fetch recently played track
   const fetchRecentlyPlayed = useCallback(async (token: string) => {
@@ -196,14 +232,16 @@ const SpotifyMiniPlayer: React.FC = () => {
         setProgressPercent((progress / duration) * 100);
         setIsLiked(likedData[0] || false);
       } else if (response.status === 401) {
-        // Token expired
-        localStorage.removeItem('spotify_access_token');
-        setAccessToken(null);
+        // Token expired: try refresh and retry once
+        const newToken = await refreshAccessToken();
+        if (newToken) {
+          await fetchCurrentTrack(newToken);
+        }
       }
     } catch (err) {
       console.error('Fetch track error:', err);
     }
-  }, [fetchRecentlyPlayed]);
+  }, [fetchRecentlyPlayed, refreshAccessToken]);
 
   // Toggle like/save track
   const toggleLike = async () => {
@@ -230,10 +268,12 @@ const SpotifyMiniPlayer: React.FC = () => {
     const code = urlParams.get('code');
 
     const storedToken = localStorage.getItem('spotify_access_token');
+    const storedRefresh = localStorage.getItem('spotify_refresh_token');
     if (code) {
       fetchAccessToken(code);
     } else if (storedToken) {
       setAccessToken(storedToken);
+      if (storedRefresh) setRefreshToken(storedRefresh);
     }
   }, [fetchAccessToken]);
 
