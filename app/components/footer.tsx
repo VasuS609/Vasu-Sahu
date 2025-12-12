@@ -8,9 +8,9 @@ import img3 from "./download3.jpg"
 const Footer = () => {
   return (
     <footer className=""> 
-    <div className='flex w-[32]  overflow-x-auto gap-4 justify-center'>
+    <div className='flex w-[42]  overflow-x-auto gap-4 justify-center'>
     
-        <div className="mt-8 flex items-center justify-center flex-shrink-0">
+         <div className="mt-8 flex items-center justify-center flex-shrink-0">
       <PixelatedCanvas
         src={img.src}
         width={300}

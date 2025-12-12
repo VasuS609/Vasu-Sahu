@@ -5,6 +5,7 @@ import { Home, Briefcase } from 'lucide-react';
 import Header from './components/Header';
 import Body from './components/body';
 import Footer from './components/footer';
+import SpotifyPlayer from './components/spotify/spotify';
 
 const PortfolioPage = () => {
   // Track which section is currently active
@@ -27,7 +28,7 @@ const PortfolioPage = () => {
       <Footer />
 </div>
       {/* Btm Nav */}
-      <nav className="sticky bottom-1 flex shadow-2xl  z-50 backdrop-blur-sm border-t border-gray-800">
+      <nav className="sticky bottom-0 flex shadow-2xl p-1 z-50 backdrop-blur-sm border-t border-gray-800">
         <div className="w-md mx-auto px-4">
           <div className="flex items-center justify-around py-1">
             
@@ -60,6 +61,9 @@ const PortfolioPage = () => {
 
             
           </div>
+           <div className="fixed bottom-4 right-4 z-50">
+         <SpotifyPlayer/>
+      </div>
         </div>
       </nav>
     </div>

@@ -4,9 +4,6 @@ import {
   MapPin,
   Clock,
   FileText,
-  Github,
-  Linkedin,
-  Twitter,
 } from "lucide-react";
 import { Matrix } from "@/components/ui/matrix";
 import NavigationBar from "./ui/NavigationBar";
@@ -179,9 +176,12 @@ const Header = () => {
           </div>
         </div>
       </header>
+          
       <div className="relative pt-10 mt-25 z-0 shadow-cyan-400">
         <Matrix rows={15} cols={35} size={7} gap={1} ariaLabel="..." />
       </div>
+     
+     
     </div>
   );
 };
