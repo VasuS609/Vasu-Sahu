@@ -5,7 +5,7 @@ import {
   Clock,
   FileText,
 } from "lucide-react";
-import { Matrix } from "@/components/ui/matrix";
+import { Matrix } from "./ui/matrix";
 import NavigationBar from "./ui/NavigationBar";
 import { LayoutTextFlip } from "./ui/layout-text-flip";
 
